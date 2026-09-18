@@ -1,0 +1,16 @@
+{
+  "id": "baige-community-20260918",
+  "status": "community_snapshot_unverified",
+  "upstream_commit": "8e854a4fcfe2527d846fa917d51c2c50ebafabb1",
+  "source": "https://github.com/Cjy-CN/wanxiang-build/blob/8e854a4fcfe2527d846fa917d51c2c50ebafabb1/skills/wanxiang-build/data/documents/王者万象棋棋手详情.json",
+  "player": "白歌",
+  "merge_threshold": 4,
+  "improvisation_threshold": 6,
+  "cards": {
+    "即兴创作": {"description": "随机获得场上1名英雄的复制。", "target_zone": "board"},
+    "灵感爆发": {"description": "释放3道剑气，斩击手牌中随机3张非觉醒英雄牌，将每张牌斩为2张转瞬版复制。", "target_zone": "hand"},
+    "奇才": {"description": "指定1名英雄，获得4张该英雄牌。", "target_zone": "unknown"}
+  },
+  "unknowns": ["随机选择权重", "灵感爆发是否无放回抽样", "不足3张目标时的处理", "转瞬牌详细失效时点", "当前正式服与快照差异", "奇才所有合法目标范围"],
+  "notice": "只用于条件性机制提醒，未对当前正式服独立核实。不能把此档案当作完整游戏引擎。"
+}

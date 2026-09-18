@@ -1,0 +1,81 @@
+name: Import pinned upstream
+
+on:
+  push:
+    branches: [feat/baige-live-advisor]
+    paths: [.github/workflows/import-upstream.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-pinned-upstream
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: github.repository == 'jkwind02-lang/wangxiangzs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Import verified snapshot without executing upstream code
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = 'feat/baige-live-advisor'
+          if test -f UPSTREAM_IMPORT.json; then
+            echo 'Pinned upstream has already been imported; no changes.'
+            exit 0
+          fi
+          SOURCE=8e854a4fcfe2527d846fa917d51c2c50ebafabb1
+          git fetch --no-tags https://github.com/Cjy-CN/wanxiang-build.git "$SOURCE"
+          test "$(git rev-parse "$SOURCE^{tree}")" = cb498d09ed17cdc43271b9000bc9839d77c56e7a
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git merge --allow-unrelated-histories --no-commit -s ours "$SOURCE"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import subprocess
+
+          commit = '8e854a4fcfe2527d846fa917d51c2c50ebafabb1'
+          tree = 'cb498d09ed17cdc43271b9000bc9839d77c56e7a'
+          raw = subprocess.check_output(['git', 'ls-tree', '-r', '-z', commit])
+          entries = []
+          plan = []
+          for line in raw.split(b'\0'):
+              if not line:
+                  continue
+              header, name = line.split(b'\t', 1)
+              mode, kind, blob = header.decode('ascii').split()
+              source = name.decode('utf-8')
+              relative = pathlib.PurePosixPath(source)
+              if mode not in {'100644', '100755'} or kind != 'blob':
+                  raise RuntimeError('Unexpected upstream entry type: ' + source)
+              if relative.is_absolute() or any(p in {'.', '..', '.git'} for p in relative.parts):
+                  raise RuntimeError('Unsafe upstream path: ' + source)
+              target = pathlib.Path('UPSTREAM_README.md' if source == 'README.md' else source)
+              if target.exists() or target.is_symlink():
+                  raise RuntimeError('Refusing to overwrite existing file: ' + str(target))
+              data = subprocess.check_output(['git', 'show', commit + ':' + source])
+              plan.append((target, data, mode))
+              entries.append({'source_path': source, 'target_path': target.as_posix(),
+                              'git_blob': blob, 'sha256': hashlib.sha256(data).hexdigest()})
+          for target, data, mode in plan:
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(data)
+              target.chmod(0o755 if mode == '100755' else 0o644)
+          manifest = {'repository': 'Cjy-CN/wanxiang-build', 'commit': commit, 'tree': tree,
+                      'history': 'Original upstream commit retained as a merge parent.',
+                      'license': 'No new license is assigned to upstream material.', 'files': entries}
+          pathlib.Path('UPSTREAM_IMPORT.json').write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('Imported', len(entries), 'upstream files; all original blobs preserved.')
+          PY
+          git add -- skills UPSTREAM_README.md UPSTREAM_IMPORT.json
+          git commit -m 'chore: import upstream 8e854a4 with original history and checksum manifest'
+          git push origin HEAD:refs/heads/feat/baige-live-advisor

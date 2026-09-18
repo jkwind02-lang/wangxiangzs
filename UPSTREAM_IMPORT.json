@@ -1,0 +1,195 @@
+{
+  "repository": "Cjy-CN/wanxiang-build",
+  "commit": "8e854a4fcfe2527d846fa917d51c2c50ebafabb1",
+  "tree": "cb498d09ed17cdc43271b9000bc9839d77c56e7a",
+  "history": "Original upstream commit retained as a merge parent.",
+  "license": "No new license is assigned to upstream material.",
+  "files": [
+    {
+      "source_path": "README.md",
+      "target_path": "UPSTREAM_README.md",
+      "git_blob": "e336be4643c49750a0c14a55c1ac0537c9f08853",
+      "sha256": "545e866063e26b6663d90fe126e9f68bfbe5684091264e8c261f28ccf81cd8fd"
+    },
+    {
+      "source_path": "skills/wanxiang-build/SKILL.md",
+      "target_path": "skills/wanxiang-build/SKILL.md",
+      "git_blob": "1f60f73916b2fc438bf6128a7771e332b8ecf79f",
+      "sha256": "9743c9f53cb11b74bd15ea02f645409219794fb173342394eddf74ae035af419"
+    },
+    {
+      "source_path": "skills/wanxiang-build/agents/openai.yaml",
+      "target_path": "skills/wanxiang-build/agents/openai.yaml",
+      "git_blob": "85b0418153bff4ffce982836f01af5081693a6cc",
+      "sha256": "d148ca93029131bab75d3ebbff1e73a59c66c942117a8da5ac317e4843738def"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_召唤物基础数值与成长.md",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_召唤物基础数值与成长.md",
+      "git_blob": "467c7ad4369d60620c01e3e97b498dff779653e8",
+      "sha256": "dbce4e11f379581264cf3e76bac7c1e4c8082c2634ae135cb52802dcddb14d70"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_天赋牌.json",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_天赋牌.json",
+      "git_blob": "fccd5feab5e2d0d9a802fc65736ed15a1a436a98",
+      "sha256": "7b409b7750ebd6cd90c31d922dff863be89d671f7a289c0fbf7a8ed550c9120f"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_攻击数值与抗性计算关系.md",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_攻击数值与抗性计算关系.md",
+      "git_blob": "284baeeccbf3b251da5bafbd13e2b33d80cb590a",
+      "sha256": "2d2765c703c71be3a83b88c20445604d73f36db679601dbcf97124023773229f"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_效果牌.json",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_效果牌.json",
+      "git_blob": "365ef85b839c285300fb698ad8d5ff643bd07804",
+      "sha256": "b15fb37db6c0d7195a8220e99e7ec699d2ae28821ee31f16244d4aa8fe1b11cb"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_英雄成长与属性值关系.md",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_英雄成长与属性值关系.md",
+      "git_blob": "6c97ae5b316b416ccc20eba442e60c99be060127",
+      "sha256": "8546a7e6fb3d25d44fa1a751e7a35665d6a872b39330b93a9557f055a3d7a494"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_英雄技能强化一览.md",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_英雄技能强化一览.md",
+      "git_blob": "f2d543ba8762927bbaeb19e534710e7a389c1bb1",
+      "sha256": "858719c9dc91f196ae70efa4f47ebb47f691df55a4ed65576f8e09a50ebed152"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_英雄牌.json",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_英雄牌.json",
+      "git_blob": "4ed2c5d2f4c6ec27cf1d019b04c5189e2236b616",
+      "sha256": "66efddcb5c62eef339cbd495e27edbf452058badfe29d654e1979f3c60dc8068"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋_装备牌.json",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋_装备牌.json",
+      "git_blob": "ede6a4d42a911e87afa0c0ba45da9571d8b173c6",
+      "sha256": "65518abe8c9428a24c2ff0b09b97b258188991b8b8fc6d60e571102bc9b8927a"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋棋手详情.json",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋棋手详情.json",
+      "git_blob": "e75648090eccad977c3a4e5037434ec457b74d76",
+      "sha256": "5896007acd71007b6b0dfae953a895b2a43a762c797f44e41ac75c861f73ad52"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/王者万象棋规则说明.md",
+      "target_path": "skills/wanxiang-build/data/documents/王者万象棋规则说明.md",
+      "git_blob": "1787ff46461bb9222e3f3588a243ff096e09a034",
+      "sha256": "c8deae237d327df0ecbf9f6ff661d558325dc50d9f302b5e8796c1179e699835"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/documents/补充说明.md",
+      "target_path": "skills/wanxiang-build/data/documents/补充说明.md",
+      "git_blob": "a7eb777bae9c47bc1c8ebc71fe7fc0596e4c7909",
+      "sha256": "6f1dddb666f37e38ba3ee8d53ea86dae40ff42950980baab60bba2b5a2d0a8fb"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/references/官方推荐阵容_5套.json",
+      "target_path": "skills/wanxiang-build/data/references/官方推荐阵容_5套.json",
+      "git_blob": "9de30e2328a513479d303133b68a39d1bbaf2ed9",
+      "sha256": "898c4bc9d89dbb56051480bf71213bd82a38a51090ebfd2cf052f959731295b1"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/references/热门推荐阵容_20套.json",
+      "target_path": "skills/wanxiang-build/data/references/热门推荐阵容_20套.json",
+      "git_blob": "58c35079feb769fa24e93643970e420785537003",
+      "sha256": "9837500d8d0e54d236ca3715e381fa2eeaac8c8f4a0cf9e18fee619067180bca"
+    },
+    {
+      "source_path": "skills/wanxiang-build/data/references/综合推荐_瑶妹日落海艾琳.json",
+      "target_path": "skills/wanxiang-build/data/references/综合推荐_瑶妹日落海艾琳.json",
+      "git_blob": "7e88cd92115b54e58fa7cc7b3d08454a01fa1595",
+      "sha256": "390dc49759434d9211a256983ce63cfcc466c14e80ee9e74337a34c10dc53e68"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/cases.md",
+      "target_path": "skills/wanxiang-build/references/cases.md",
+      "git_blob": "a85526b26efa8029a5f2aba400b8331c56f69bad",
+      "sha256": "b5cfcaf881678c19a67e0c0c558d665a0e07f542933b784ce811e482dd46fba6"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/combat-evaluation.md",
+      "target_path": "skills/wanxiang-build/references/combat-evaluation.md",
+      "git_blob": "c6be61285c943c3be1e22043910a9ce6f1c5b170",
+      "sha256": "59a4876df47a0ca09079f8655c3dad6d23462b632ecb4dc23aece6a4a0a6a1e3"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/combat-math.md",
+      "target_path": "skills/wanxiang-build/references/combat-math.md",
+      "git_blob": "456d19a2e6e6a76755bd7e543f05b82b6072f073",
+      "sha256": "52d9f0463c081709d094229589fce21cd1ed2ee368461b0f525184db3a67fda7"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/growth.md",
+      "target_path": "skills/wanxiang-build/references/growth.md",
+      "git_blob": "e3add4ac6f0c0d19b9683a7f10298120c384eefc",
+      "sha256": "d48ab3467948239ad5967104d1dab1c6e878abe8e0b62744b3248c90cb670c3d"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/initial-build-player-fit.md",
+      "target_path": "skills/wanxiang-build/references/initial-build-player-fit.md",
+      "git_blob": "2d113a20b26ddc312bb6dc04a31b9e208aaa0c11",
+      "sha256": "62ba6a576c56246f2eaa87e75b9f6b8d7ca752c32ae9e98404d89b4c2a2aeed7"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/investment.md",
+      "target_path": "skills/wanxiang-build/references/investment.md",
+      "git_blob": "9140e2ab3795be0f28ed1c98598dab03e5c1e059",
+      "sha256": "5ac0c2fc8066204da7d3fb08494fea1632a3abff3d57b2393da84293fe2f9b80"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/keyword-tags.md",
+      "target_path": "skills/wanxiang-build/references/keyword-tags.md",
+      "git_blob": "3642a5746c527fa9f2599de59a00e09a47c96ff0",
+      "sha256": "b1cc6ef938ef73f0b74eb0911f89e33bf466000ac81a1ad35834e4b7925255e1"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/reasoning.md",
+      "target_path": "skills/wanxiang-build/references/reasoning.md",
+      "git_blob": "f8e93348507559a1a7c6f67778675d296d0edc33",
+      "sha256": "d3f4715992471f8517beaff36fc3abc13bd21afb6eec491767002e7566d5b30c"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/report-format.md",
+      "target_path": "skills/wanxiang-build/references/report-format.md",
+      "git_blob": "9c48416cfeff868629ddf700939cca73b910e189",
+      "sha256": "23c3e5b1989c66e401f0b67693a04153c8cafaf8d2d3066d3714e6c703301138"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/scoring.md",
+      "target_path": "skills/wanxiang-build/references/scoring.md",
+      "git_blob": "75708611328166f95dcf96d232477bcf8abdcff1",
+      "sha256": "1633805a48c92eaf1306ccd8f89a212d2416e556a57268e342baff336054a570"
+    },
+    {
+      "source_path": "skills/wanxiang-build/references/sources.md",
+      "target_path": "skills/wanxiang-build/references/sources.md",
+      "git_blob": "ca0b5286c817d1d9efdb6063400347a8c3473145",
+      "sha256": "999374297ea61987aaa97c122d64f3eab72abcf871b2bacd381066bd3af2cef5"
+    },
+    {
+      "source_path": "skills/wanxiang-build/scripts/lookup.py",
+      "target_path": "skills/wanxiang-build/scripts/lookup.py",
+      "git_blob": "bbf4aee4821452e3b30a9a4146e5a7a03b6711e9",
+      "sha256": "bcc287f0c97869a47b30d791bf51365bb08bf8b64b9c5409ca600ea6b2f077b4"
+    },
+    {
+      "source_path": "skills/wanxiang-build/scripts/score.py",
+      "target_path": "skills/wanxiang-build/scripts/score.py",
+      "git_blob": "b5154d6e2c40d611125850b9e9c6ac790c4eaed0",
+      "sha256": "2a28fee18649918215c2dcc56801667a462fb7c092896667d56c06bdf905d3ce"
+    },
+    {
+      "source_path": "skills/wanxiang-build/source_config.json",
+      "target_path": "skills/wanxiang-build/source_config.json",
+      "git_blob": "3c45df26c502f45b37a15a9f78d104fac1d40ee1",
+      "sha256": "90949a50ebe43923fb7ab017d69cee45408fed6aa767b4fbc1a1214ea1c50a19"
+    }
+  ]
+}

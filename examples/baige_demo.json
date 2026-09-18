@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "match_id": "synthetic-demo-not-a-real-game",
+  "sequence": 1,
+  "observed_at": "2026-09-19T00:00:00+09:00",
+  "phase": "preparation",
+  "player": "白歌",
+  "round": 6,
+  "hp": 30,
+  "energy": 5,
+  "player_level": 3,
+  "board": [
+    {"uid": "b1", "name": "示例英雄甲", "kind": "hero", "card_id": null, "level": 20, "awakened": false, "position": [0, 0]},
+    {"uid": "b2", "name": "示例英雄乙", "kind": "hero", "card_id": null, "level": 15, "awakened": false, "position": [1, 0]}
+  ],
+  "hand": [
+    {"uid": "h1", "name": "即兴创作", "kind": "effect"},
+    {"uid": "h2", "name": "灵感爆发", "kind": "effect"},
+    {"uid": "h3", "name": "示例英雄甲", "kind": "hero", "awakened": false},
+    {"uid": "h4", "name": "示例英雄乙", "kind": "hero", "awakened": false}
+  ],
+  "shop": [
+    {"uid": "s1", "name": "示例英雄甲", "kind": "hero", "price": 3},
+    {"uid": "s2", "name": "示例英雄丙", "kind": "hero", "price": 6}
+  ],
+  "complete": {"board": true, "hand": true, "shop": false},
+  "counters": {"merges_since_reward": 3, "improvisations_since_burst": 5},
+  "talents": [],
+  "equipment": [],
+  "banned_faction": null,
+  "refresh_cost": 1,
+  "upgrade_cost": null,
+  "provenance": "synthetic",
+  "confirmed": true
+}

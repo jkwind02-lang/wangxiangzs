@@ -1,0 +1,73 @@
+name: Assistant tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - 'wxq_assistant/**'
+      - 'tests/**'
+      - 'tools/**'
+      - 'profiles/**'
+      - 'skills/**'
+      - '.github/workflows/tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Preserve upstream bytes across platforms
+        shell: bash
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check Python version
+        run: python -c "import sys; print(sys.version); assert sys.version_info >= (3, 11)"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Compile modules
+        run: python -m compileall -q wxq_assistant tools tests
+      - name: Verify all upstream files
+        run: python tools/verify_upstream.py
+      - name: Verify original upstream history
+        run: git merge-base --is-ancestor 8e854a4fcfe2527d846fa917d51c2c50ebafabb1 HEAD
+      - name: Verify real upstream knowledge integration
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from wxq_assistant.knowledge import Knowledge, FILES, records
+          from wxq_assistant.rules import ROOT
+          state = json.loads((ROOT / 'examples/baige_demo.json').read_text(encoding='utf-8'))
+          state['player'] = '白歌'
+          for zone in ('board', 'hand', 'shop', 'talents', 'equipment'):
+              state[zone] = []
+          knowledge = Knowledge()
+          result = knowledge.for_state(state)
+          assert not result['missing_files'], result['missing_files']
+          assert not result['missing_names'], result['missing_names']
+          assert any(item['source_id'].startswith('player:') for item in result['evidence'])
+          for kind, filename in FILES.items():
+              raw = json.loads((knowledge.root / filename).read_text(encoding='utf-8-sig'))
+              print(kind, len(list(records(raw))), 'source records parsed')
+          print('Real upstream Baige record retrieved with provenance; no online model call.')
+          PY
+      - name: Offline demo
+        run: python -m wxq_assistant demo
+      - name: Windows desktop module import only
+        if: runner.os == 'Windows'
+        run: python -c "import tkinter; import wxq_assistant.ui; print('Desktop imports OK; game capture is NOT tested.')"

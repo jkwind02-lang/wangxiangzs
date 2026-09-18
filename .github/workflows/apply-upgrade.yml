@@ -1,0 +1,95 @@
+name: Apply verified P0 upgrade
+
+on:
+  push:
+    branches: [feat/baige-live-advisor]
+    paths: [.github/workflows/apply-upgrade.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-verified-p0-upgrade
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.repository == 'jkwind02-lang/wangxiangzs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Verify archive, unpack source, run tests, and commit to development branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = 'feat/baige-live-advisor'
+          if ! test -f .bootstrap/p0.part-00; then
+            echo 'Upgrade source has already been expanded; no changes.'
+            exit 0
+          fi
+          test -f UPSTREAM_IMPORT.json
+          python3 - <<'PY'
+          import gzip
+          import hashlib
+          import io
+          import json
+          import pathlib
+          import tarfile
+
+          parts = [pathlib.Path(f'.bootstrap/p0.part-{i:02d}') for i in range(9)]
+          archive = b''.join(p.read_bytes() for p in parts)
+          expected = 'f7732c0f9e9e7ebbaaf2206b4aca619ee6103d08fb110d785d2104c30ee9d600'
+          if len(archive) != 35940 or hashlib.sha256(archive).hexdigest() != expected:
+              raise RuntimeError('Upgrade archive checksum mismatch; no files changed')
+          unpacked = gzip.decompress(archive)
+          if len(unpacked) > 2_000_000:
+              raise RuntimeError('Unexpected archive size')
+          files = {}
+          root_files = {'.env.example', '.gitignore', 'README.md', 'UPSTREAM.json',
+                        'UPGRADE_FILES.json', 'pyproject.toml'}
+          directories = {'wxq_assistant', 'tools', 'tests', 'docs', 'profiles', 'examples'}
+          with tarfile.open(fileobj=io.BytesIO(unpacked), mode='r:') as tar:
+              for member in tar.getmembers():
+                  path = pathlib.PurePosixPath(member.name)
+                  if not member.isfile() or path.is_absolute() or any(p in {'.', '..', '.git'} for p in path.parts):
+                      raise RuntimeError('Unsafe archive member: ' + member.name)
+                  if path.as_posix() in files or not path.parts:
+                      raise RuntimeError('Duplicate or empty archive path')
+                  if path.as_posix() not in root_files and path.parts[0] not in directories:
+                      raise RuntimeError('Unexpected archive root: ' + member.name)
+                  stream = tar.extractfile(member)
+                  if stream is None:
+                      raise RuntimeError('Missing archive member bytes')
+                  files[path.as_posix()] = stream.read()
+          manifest = json.loads(files['UPGRADE_FILES.json'].decode('utf-8'))
+          expected_files = {row['path']: row['sha256'] for row in manifest['files']}
+          if len(expected_files) != len(manifest['files']) or set(files) != set(expected_files) | {'UPGRADE_FILES.json'}:
+              raise RuntimeError('Upgrade manifest does not match archive members')
+          for name, digest in expected_files.items():
+              if hashlib.sha256(files[name]).hexdigest() != digest:
+                  raise RuntimeError('Upgrade source hash mismatch: ' + name)
+          for name in files:
+              target = pathlib.Path(name)
+              if target.is_symlink() or not target.resolve().is_relative_to(pathlib.Path.cwd()):
+                  raise RuntimeError('Unsafe destination: ' + name)
+              if target.exists() and name not in {'README.md', '.gitignore'}:
+                  raise RuntimeError('Refusing to overwrite existing user file: ' + name)
+          for name, content in files.items():
+              target = pathlib.Path(name)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(content)
+          print('Expanded', len(files), 'verified source files; upstream files unchanged.')
+          PY
+          python3 -m unittest discover -s tests -v
+          python3 -m compileall -q wxq_assistant tools tests
+          python3 tools/verify_upstream.py
+          python3 -m wxq_assistant demo
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -- .bootstrap/p0.part-*
+          git add -- README.md .gitignore .env.example UPSTREAM.json UPGRADE_FILES.json pyproject.toml docs examples profiles tests tools wxq_assistant
+          git commit -m 'feat: add tested Baige decision assistant prototype and remove transfer chunks'
+          git push origin HEAD:refs/heads/feat/baige-live-advisor

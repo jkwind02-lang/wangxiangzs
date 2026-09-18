@@ -1,0 +1,11 @@
+{
+  "repository": "Cjy-CN/wanxiang-build",
+  "commit": "8e854a4fcfe2527d846fa917d51c2c50ebafabb1",
+  "tree": "cb498d09ed17cdc43271b9000bc9839d77c56e7a",
+  "commit_date": "2026-09-18",
+  "target_repository": "jkwind02-lang/wangxiangzs",
+  "license_observation": "未在已查询的固定版本目录中发现LICENSE；不为上游内容自行补充授权或许可证。",
+  "package_contents": "白歌排位P0升级代码；上游全量资料单独通过固定提交导入，逐文件校验见UPSTREAM_IMPORT.json。",
+  "import": "GitHub导入任务保留上游完整历史，通过双父提交并入开发分支；原README存为UPSTREAM_README.md。",
+  "remote_write_status": "2026-09-19已成功验证当前连接写入；初始化提交662a5ca5b9bba213da63ceba28d58a3ebf6592a8。"
+}

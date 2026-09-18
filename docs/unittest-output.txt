@@ -1,0 +1,83 @@
+test_blocked_suggestion_replaced (test_core.AdviceTests.test_blocked_suggestion_replaced) ... ok
+test_fake_evidence (test_core.AdviceTests.test_fake_evidence) ... ok
+test_local_mode_explicit (test_core.AdviceTests.test_local_mode_explicit) ... ok
+test_missing_card_text_blocks_buy (test_core.AdviceTests.test_missing_card_text_blocks_buy) ... ok
+test_model_called_with_context (test_core.AdviceTests.test_model_called_with_context) ... ok
+test_unexpected_fields (test_core.AdviceTests.test_unexpected_fields) ... ok
+test_valid_informational_answer (test_core.AdviceTests.test_valid_informational_answer) ... ok
+test_wrong_snapshot (test_core.AdviceTests.test_wrong_snapshot) ... ok
+test_budget_omits_instead_of_truncating (test_core.KnowledgeTests.test_budget_omits_instead_of_truncating) ... ok
+test_full_parent_and_hash (test_core.KnowledgeTests.test_full_parent_and_hash) ... ok
+test_missing_files_visible (test_core.KnowledgeTests.test_missing_files_visible) ... ok
+test_type_name_collision_not_satisfied (test_core.KnowledgeTests.test_type_name_collision_not_satisfied) ... ok
+test_combat_blocks_economic_action (test_core.RuleTests.test_combat_blocks_economic_action) ... ok
+test_effect_is_not_hero_play (test_core.RuleTests.test_effect_is_not_hero_play) ... ok
+test_incomplete_random_target_set (test_core.RuleTests.test_incomplete_random_target_set) ... ok
+test_insufficient_energy (test_core.RuleTests.test_insufficient_energy) ... ok
+test_invalid_action_field (test_core.RuleTests.test_invalid_action_field) ... ok
+test_known_price_check_is_not_full_legality (test_core.RuleTests.test_known_price_check_is_not_full_legality) ... ok
+test_list_uid_not_crash (test_core.RuleTests.test_list_uid_not_crash) ... ok
+test_no_board_targets (test_core.RuleTests.test_no_board_targets) ... ok
+test_non_baige_not_reused (test_core.RuleTests.test_non_baige_not_reused) ... ok
+test_random_cannot_name_target (test_core.RuleTests.test_random_cannot_name_target) ... ok
+test_threshold_reminder_conditional (test_core.RuleTests.test_threshold_reminder_conditional) ... ok
+test_unconfirmed_blocks_sell (test_core.RuleTests.test_unconfirmed_blocks_sell) ... ok
+test_unknown_awakened_blocks (test_core.RuleTests.test_unknown_awakened_blocks) ... ok
+test_unknown_cost_blocks (test_core.RuleTests.test_unknown_cost_blocks) ... ok
+test_unknown_energy_blocks (test_core.RuleTests.test_unknown_energy_blocks) ... ok
+test_unknown_uid_blocks (test_core.RuleTests.test_unknown_uid_blocks) ... ok
+test_wait_remains_information (test_core.RuleTests.test_wait_remains_information) ... ok
+test_edit_invalidates (test_core.SessionTests.test_edit_invalidates) ... ok
+test_expired_response (test_core.SessionTests.test_expired_response) ... ok
+test_live_display_expires (test_core.SessionTests.test_live_display_expires) ... ok
+test_live_rejects_old_snapshot (test_core.SessionTests.test_live_rejects_old_snapshot) ... ok
+test_new_match_invalidates (test_core.SessionTests.test_new_match_invalidates) ... ok
+test_replay_display_not_erased_after_publication_budget (test_core.SessionTests.test_replay_display_not_erased_after_publication_budget) ... ok
+test_second_request_invalidates_first (test_core.SessionTests.test_second_request_invalidates_first) ... ok
+test_bool_is_not_energy (test_core.StateTests.test_bool_is_not_energy) ... ok
+test_duplicate_uid (test_core.StateTests.test_duplicate_uid) ... ok
+test_future_timestamp_not_fresh (test_core.StateTests.test_future_timestamp_not_fresh) ... ok
+test_hash_changes_on_energy (test_core.StateTests.test_hash_changes_on_energy) ... ok
+test_hash_changes_on_match (test_core.StateTests.test_hash_changes_on_match) ... ok
+test_incomplete_flags_required (test_core.StateTests.test_incomplete_flags_required) ... ok
+test_invalid_position (test_core.StateTests.test_invalid_position) ... ok
+test_no_naive_timestamp (test_core.StateTests.test_no_naive_timestamp) ... ok
+test_old_timestamp_not_fresh (test_core.StateTests.test_old_timestamp_not_fresh) ... ok
+test_reject_duplicate_json (test_core.StateTests.test_reject_duplicate_json) ... ok
+test_reject_nan (test_core.StateTests.test_reject_nan) ... ok
+test_unknown_energy_not_zero (test_core.StateTests.test_unknown_energy_not_zero) ... ok
+test_unknown_extra_field (test_core.StateTests.test_unknown_extra_field) ... ok
+test_valid (test_core.StateTests.test_valid) ... ok
+test_existing_destination_never_cloned_over (test_import.ImportTests.test_existing_destination_never_cloned_over) ... ok
+test_git_directory_rejected (test_import.ImportTests.test_git_directory_rejected) ... ok
+test_gitignore_combined (test_import.ImportTests.test_gitignore_combined) ... ok
+test_hash_mismatch_before_writes (test_import.ImportTests.test_hash_mismatch_before_writes) ... ok
+test_preserve_upstream_readme (test_import.ImportTests.test_preserve_upstream_readme) ... ok
+test_real_local_git_preserves_history_and_stages_overlay (test_import.ImportTests.test_real_local_git_preserves_history_and_stages_overlay) ... Cloning into '/tmp/tmpjjpsbb_g/full-clone'...
+done.
+ok
+test_secret_file_rejected (test_import.ImportTests.test_secret_file_rejected) ... ok
+test_traversal_rejected (test_import.ImportTests.test_traversal_rejected) ... ok
+test_unexpected_collision_before_writes (test_import.ImportTests.test_unexpected_collision_before_writes) ... ok
+test_embedded_credentials_rejected (test_transport.SettingsTests.test_embedded_credentials_rejected) ... ok
+test_external_http_rejected (test_transport.SettingsTests.test_external_http_rejected) ... ok
+test_https_external (test_transport.SettingsTests.test_https_external) ... ok
+test_loopback_without_key (test_transport.SettingsTests.test_loopback_without_key) ... ok
+test_missing_external_key (test_transport.SettingsTests.test_missing_external_key) ... ok
+test_nan_timeout_rejected (test_transport.SettingsTests.test_nan_timeout_rejected) ... ok
+test_no_redirect (test_transport.SettingsTests.test_no_redirect) ... ok
+test_query_rejected (test_transport.SettingsTests.test_query_rejected) ... ok
+test_code_fenced_json_rejected (test_transport.TransportTests.test_code_fenced_json_rejected) ... ok
+test_json_success_and_payload (test_transport.TransportTests.test_json_success_and_payload) ... ok
+test_no_secret_in_http_error (test_transport.TransportTests.test_no_secret_in_http_error) ... ok
+test_nonobject_response (test_transport.TransportTests.test_nonobject_response) ... ok
+test_oversized_response (test_transport.TransportTests.test_oversized_response) ... ok
+test_timeout (test_transport.TransportTests.test_timeout) ... ok
+test_truncated_response_rejected (test_transport.TransportTests.test_truncated_response_rejected) ... ok
+test_cannot_confirm_or_change_capture_time (test_transport.VisionTests.test_cannot_confirm_or_change_capture_time) ... ok
+test_invalid_image_not_sent (test_transport.VisionTests.test_invalid_image_not_sent) ... ok
+
+----------------------------------------------------------------------
+Ran 76 tests in 0.150s
+
+OK
